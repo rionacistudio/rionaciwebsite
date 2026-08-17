@@ -96,7 +96,7 @@
     }
 
     .site-header {
-      position: absolute; z-index: 100; top: 0; left: 0; width: 100%;
+      position: fixed; z-index: 100; top: 0; left: 0; width: 100%; // ponytail: fixed, not sticky, because .page has overflow:hidden which clips sticky
       display: grid; grid-template-columns: 1fr auto 1fr;
       align-items: start; padding: 22px 28px;
       mix-blend-mode: difference; color: white;
