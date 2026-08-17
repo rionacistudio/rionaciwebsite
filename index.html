@@ -186,14 +186,14 @@
     .projects { padding: 0 28px 12vh; }
     .section-head { display: flex; justify-content: space-between; padding: 20px 0; border-top: 1px solid var(--line); }
     .project {
-      position: relative; display: grid; overflow: hidden;
+      position: relative; display: grid;
       grid-template-columns: 9% 44% 1fr auto; gap: 18px;
       align-items: center; padding: 19px 0 22px; border-top: 1px solid var(--line);
     }
     .project:last-child { border-bottom: 1px solid var(--line); }
     .project__number, .project__type, .project__year { padding-top: 7px; }
     .project__name {
-      overflow: hidden; max-width: 100%; font-size: clamp(39px, 5vw, 80px); font-weight: 300;
+      max-width: 100%; font-size: clamp(39px, 5vw, 80px); font-weight: 300;
       line-height: .88; letter-spacing: -.07em; transition: color .3s, transform .55s var(--ease);
     }
     .project:hover .project__name { color: var(--accent); transform: translateX(10px); }
