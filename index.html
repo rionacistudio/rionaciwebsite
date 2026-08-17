@@ -743,7 +743,8 @@
       };
       animPtr();
 
-      document.querySelectorAll("a, button").forEach(el => {
+      document.querySelectorAll("a, button, p, span, h1, h2, h3, h4, h5, h6, li, div, sup, .mono").forEach(el => {
+        if (el.closest(".hover-project")) return;
         el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
         el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
       });
