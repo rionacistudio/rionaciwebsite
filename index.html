@@ -33,7 +33,7 @@
       cursor: none;
     }
 
-    body.menu-open { overflow: hidden; }
+    body.loading, body.menu-open { overflow: hidden; }
 
     ::selection { color: var(--paper); background: var(--ink); }
 
@@ -57,6 +57,20 @@
       opacity: .035; pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
     }
+
+    .loader {
+      position: fixed; z-index: 10000; inset: 0;
+      display: grid; place-items: center; overflow: hidden;
+      color: var(--paper); background: var(--ink);
+    }
+    .loader__inner { width: min(88vw, 760px); }
+    .loader__meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .loader__number {
+      font-family: "DM Mono", monospace; font-size: clamp(48px, 9vw, 110px);
+      font-weight: 300; line-height: .85; letter-spacing: -.08em;
+    }
+    .loader__track { position: relative; width: 100%; height: 1px; overflow: hidden; background: rgba(255,255,255,.2); }
+    .loader__bar { width: 0; height: 100%; background: var(--paper); }
 
     .cursor, .cursor-label {
       position: fixed; z-index: 9999; left: 0; top: 0;
@@ -302,8 +316,18 @@
   </style>
 </head>
 
-<body>
+<body class="loading">
   <div class="noise"></div>
+
+  <div class="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <div class="loader__meta">
+        <span class="mono">Loading portfolio</span>
+        <div class="loader__number">00</div>
+      </div>
+      <div class="loader__track"><div class="loader__bar"></div></div>
+    </div>
+  </div>
 
   <div class="cursor"></div>
   <div class="cursor-label">View</div>
@@ -530,6 +554,9 @@
     });
 
     const body = document.body;
+    const loader = document.querySelector(".loader");
+    const loaderNumber = document.querySelector(".loader__number");
+    const loaderBar = document.querySelector(".loader__bar");
     const menuButton = document.querySelector(".menu-trigger");
     const menuPanel = document.querySelector(".menu-panel");
     const menuText = menuButton.querySelector("span");
@@ -620,20 +647,14 @@
       });
 
       var _ease = 0.06;
-      var _lastRender = 0;
-      var _orbVisible = true;
-      var _orbObs = new IntersectionObserver(function(entries) { _orbVisible = entries[0].isIntersecting; }, { threshold: 0 });
-      _orbObs.observe(orbEl);
-      (function animOrb(t) {
+      (function animOrb() {
         requestAnimationFrame(animOrb);
-        if (!_orbVisible || t - _lastRender < 33) return;
-        _lastRender = t;
         catCurrentRX += (catTargetRX - catCurrentRX) * _ease;
         catCurrentRotY += (catTargetRY - catCurrentRotY) * _ease;
         catPivot.rotation.x = catCurrentRX;
         catPivot.rotation.y = catCurrentRotY;
         orbRenderer.render(orbScene, orbCamera);
-      })(0);
+      })();
 
       window.addEventListener("resize", function() {
         var w = orbEl.clientWidth;
@@ -656,10 +677,25 @@
       lenis.on("scroll", ScrollTrigger.update);
     }
 
-    if (!reducedMotion) {
-      gsap.to(".hero__title .line > span", { y: 0, duration: 1.15, stagger: .1, ease: "power4.out", delay: .3 });
-      gsap.from(".hero__top > *, .hero__bottom > *", { y: 20, opacity: 0, duration: .8, stagger: .08, ease: "power3.out", delay: .6 });
-      gsap.from(orbEl, { scale: .4, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "transform", delay: .5 });
+    let progress = 0;
+    const loadInterval = setInterval(() => {
+      progress += Math.max(1, Math.floor(Math.random() * 8));
+      progress = Math.min(progress, 100);
+      loaderNumber.textContent = String(progress).padStart(2, "0");
+      gsap.to(loaderBar, { width: progress + "%", duration: .25, ease: "power2.out" });
+      if (progress >= 100) { clearInterval(loadInterval); revealSite(); }
+    }, 55);
+
+    function revealSite() {
+      const timeline = gsap.timeline({
+        onComplete: () => { body.classList.remove("loading"); loader.remove(); ScrollTrigger.refresh(); }
+      });
+      timeline
+        .to(".loader__inner", { y: -30, opacity: 0, duration: .55, ease: "power3.in" })
+        .to(loader, { yPercent: -100, duration: 1, ease: "power4.inOut" })
+        .to(".hero__title .line > span", { y: 0, duration: 1.15, stagger: .1, ease: "power4.out" }, "-=.45")
+        .from(".hero__top > *, .hero__bottom > *", { y: 20, opacity: 0, duration: .8, stagger: .08, ease: "power3.out" }, "-=.8")
+        .from(orbEl, { scale: .4, opacity: 0, duration: 1.3, ease: "expo.out", clearProps: "transform" }, "-=1.05");
     }
 
     menuButton.addEventListener("click", () => {
