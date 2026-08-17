@@ -329,7 +329,7 @@
       <a href="#contact"><span>Kontak</span><sup>04</sup></a>
     </nav>
     <div class="menu-footer mono">
-      <span>Batam / indonesia</span>
+      <span>Batam / Indonesia</span>
       <span>© 2026</span>
     </div>
   </aside>
@@ -621,9 +621,12 @@
 
       var _ease = 0.06;
       var _lastRender = 0;
+      var _orbVisible = true;
+      var _orbObs = new IntersectionObserver(function(entries) { _orbVisible = entries[0].isIntersecting; }, { threshold: 0 });
+      _orbObs.observe(orbEl);
       (function animOrb(t) {
         requestAnimationFrame(animOrb);
-        if (t - _lastRender < 33) return;
+        if (!_orbVisible || t - _lastRender < 33) return;
         _lastRender = t;
         catCurrentRX += (catTargetRX - catCurrentRX) * _ease;
         catCurrentRotY += (catTargetRY - catCurrentRotY) * _ease;
@@ -690,8 +693,12 @@
     if (desktopPointer) {
       let mouseX = innerWidth / 2, mouseY = innerHeight / 2;
       let cursorX = mouseX, cursorY = mouseY, visualX = mouseX, visualY = mouseY;
-      window.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
+      let _mouseMoved = false;
+      window.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; _mouseMoved = true; });
       const animPtr = () => {
+        requestAnimationFrame(animPtr);
+        if (!_mouseMoved) return;
+        _mouseMoved = false;
         cursorX += (mouseX - cursorX) * .2;
         cursorY += (mouseY - cursorY) * .2;
         visualX += (mouseX - visualX) * .11;
@@ -700,21 +707,12 @@
         cursorLabel.style.transform = `translate3d(${cursorX}px,${cursorY}px,0) translate(-50%,-50%)`;
         visual.style.left = visualX + "px";
         visual.style.top = visualY + "px";
-        requestAnimationFrame(animPtr);
       };
       animPtr();
 
-      document.addEventListener("mouseover", function(e) {
-        if (e.target.closest(".hover-project")) return;
-        if (e.target.closest("a, button, p, span, h1, h2, h3, h4, h5, h6, li, div, sup, .mono")) {
-          cursor.classList.add("is-active");
-        }
-      });
-      document.addEventListener("mouseout", function(e) {
-        if (e.target.closest(".hover-project")) return;
-        if (e.target.closest("a, button, p, span, h1, h2, h3, h4, h5, h6, li, div, sup, .mono")) {
-          cursor.classList.remove("is-active");
-        }
+      document.querySelectorAll("a, button").forEach(el => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
       });
       document.querySelectorAll(".hover-project").forEach(project => {
         project.addEventListener("mouseenter", () => {
