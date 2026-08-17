@@ -693,12 +693,8 @@
     if (desktopPointer) {
       let mouseX = innerWidth / 2, mouseY = innerHeight / 2;
       let cursorX = mouseX, cursorY = mouseY, visualX = mouseX, visualY = mouseY;
-      let _mouseMoved = false;
-      window.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; _mouseMoved = true; });
+      window.addEventListener("mousemove", e => { mouseX = e.clientX; mouseY = e.clientY; });
       const animPtr = () => {
-        requestAnimationFrame(animPtr);
-        if (!_mouseMoved) return;
-        _mouseMoved = false;
         cursorX += (mouseX - cursorX) * .2;
         cursorY += (mouseY - cursorY) * .2;
         visualX += (mouseX - visualX) * .11;
@@ -707,6 +703,7 @@
         cursorLabel.style.transform = `translate3d(${cursorX}px,${cursorY}px,0) translate(-50%,-50%)`;
         visual.style.left = visualX + "px";
         visual.style.top = visualY + "px";
+        requestAnimationFrame(animPtr);
       };
       animPtr();
 
