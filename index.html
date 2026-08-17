@@ -37,8 +37,10 @@
 
     ::selection { color: var(--paper); background: var(--ink); }
 
-    a, button { color: inherit; cursor: none; }
+    a, button { color: inherit; cursor: none; -webkit-tap-highlight-color: transparent; }
     a { text-decoration: none; }
+    a:active, button:active, a:focus, button:focus { outline: none; }
+    a:focus-visible, button:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; } /* ponytail: keep keyboard focus visible while removing click border */
     button { border: 0; background: none; font: inherit; }
     img { display: block; width: 100%; }
 
@@ -122,7 +124,7 @@
       content: ""; background: currentColor; transform-origin: right;
       transition: transform .45s var(--ease);
     }
-    .menu-trigger:hover::after { transform: scaleX(0); }
+    .menu-trigger:hover::after, .menu-trigger:active::after { transform: scaleX(0); }
 
     .menu-panel {
       position: fixed; z-index: 99; inset: 0; display: flex;
