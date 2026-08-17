@@ -273,7 +273,7 @@
       .header-status { justify-self: center; }
       .hero { padding-top: 110px; }
       .hero__top { min-height: 22vh; }
-      .hero__intro { max-width: 220px; }
+      .hero__intro { max-width: 220px; margin: 0 auto; text-align: center; }
       .hero__title { text-align: center; margin-left: 0; font-size: clamp(67px, 19.5vw, 145px); line-height: .8; white-space: normal; }
       .hero__title .line:last-child { margin-left: 0; }
       .hero__bottom { right: 17px; left: 17px; grid-template-columns: 1fr 1fr; }
@@ -362,10 +362,6 @@
         <p class="hero__intro">
            Pengembang kreatif independen yang menciptakan pengalaman digital di mana desain, gerak, dan teknologi bertemu.
           </p>
-        <div class="hero__index mono">
-          Mulai sesuatu yang baru?<br>
-          Ayo mulai!
-        </div>
       </div>
 
       <h1 class="hero__title">
@@ -743,7 +739,8 @@
       };
       animPtr();
 
-      document.querySelectorAll("a, button").forEach(el => {
+      document.querySelectorAll("a, button, p, span, h1, h2, h3, h4, h5, h6, li, div, sup, .mono").forEach(el => {
+        if (el.closest(".hover-project")) return;
         el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
         el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
       });
