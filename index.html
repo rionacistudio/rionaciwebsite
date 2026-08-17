@@ -88,7 +88,12 @@
       font-size: 9px; text-transform: uppercase;
       transform: translate(-50%, -50%); transition: opacity .2s;
     }
-    .cursor-label.visible { opacity: 1; }
+    .cursor-label.visible {
+      opacity: 1;
+      width: 70px; height: 70px;
+      display: grid; place-items: center;
+      border-radius: 50%; background: #fff;
+    }
 
     .site-header {
       position: absolute; z-index: 100; top: 0; left: 0; width: 100%;
@@ -181,24 +186,18 @@
     .projects { padding: 0 28px 12vh; }
     .section-head { display: flex; justify-content: space-between; padding: 20px 0; border-top: 1px solid var(--line); }
     .project {
-      position: relative; display: grid;
+      position: relative; display: grid; overflow: hidden;
       grid-template-columns: 9% 44% 1fr auto; gap: 18px;
       align-items: start; padding: 19px 0 22px; border-top: 1px solid var(--line);
     }
     .project:last-child { border-bottom: 1px solid var(--line); }
     .project__number, .project__type, .project__year { padding-top: 7px; }
     .project__name {
-      max-width: 690px; font-size: clamp(39px, 6.2vw, 96px); font-weight: 300;
+      overflow: hidden; max-width: 100%; font-size: clamp(39px, 6.2vw, 96px); font-weight: 300;
       line-height: .88; letter-spacing: -.07em; transition: color .3s, transform .55s var(--ease);
     }
     .project:hover .project__name { color: var(--accent); transform: translateX(10px); }
     .project__meta { display: flex; flex-direction: column; min-height: 86px; justify-content: space-between; }
-    .project__arrow {
-      display: grid; width: 34px; height: 34px; place-items: center;
-      border: 1px solid var(--line); border-radius: 50%; font-size: 15px;
-      transition: transform .4s var(--ease), background .3s, color .3s;
-    }
-    .project:hover .project__arrow { color: var(--paper); background: var(--ink); transform: rotate(45deg); }
 
     .project-visual {
       position: fixed; z-index: 50; top: 0; left: 0;
@@ -293,7 +292,6 @@
       .project__name { font-size: clamp(42px, 13vw, 82px); }
       .project__meta { display: none; }
       .project__year { display: none; }
-      .project__arrow { margin-top: 3px; }
       .project-visual { display: none; }
       .about__main { grid-template-columns: 1fr; gap: 65px; }
       .footer { min-height: 80vh; }
@@ -406,15 +404,14 @@
       </header>
 
       <a class="project hover-project" href="#contact"
-         data-image="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=85">
+         data-image="img/rosstev-blog.webp">
         <span class="project__number mono">01</span>
-        <h2 class="project__name">Celestial<br>Archives</h2>
+        <h2 class="project__name">Rosstev </h2>
         <div class="project__meta mono">
-          <span>Digital experience<br>Development</span>
-          <span>Astronomy / Culture</span>
+          <span>Personal Blog<br>Custom Template</span>
+          <span>Personal Website / Blog</span>
         </div>
-        <span class="project__year mono">2025</span>
-        <span class="project__arrow">↗</span>
+        <span class="project__year mono">2024</span>
       </a>
 
       <a class="project hover-project" href="#contact"
@@ -426,7 +423,6 @@
           <span>Architecture / Art</span>
         </div>
         <span class="project__year mono">2024</span>
-        <span class="project__arrow">↗</span>
       </a>
 
       <a class="project hover-project" href="#contact"
@@ -438,7 +434,6 @@
           <span>Research / Technology</span>
         </div>
         <span class="project__year mono">2024</span>
-        <span class="project__arrow">↗</span>
       </a>
 
       <a class="project hover-project" href="#contact"
@@ -450,7 +445,6 @@
           <span>Objects / Furniture</span>
         </div>
         <span class="project__year mono">2023</span>
-        <span class="project__arrow">↗</span>
       </a>
 
       <a class="project hover-project" href="#contact"
@@ -462,7 +456,6 @@
           <span>Nature / Journal</span>
         </div>
         <span class="project__year mono">2022</span>
-        <span class="project__arrow">↗</span>
       </a>
 
       <a class="project hover-project" href="#contact"
@@ -474,7 +467,6 @@
           <span>Design / Architecture</span>
         </div>
         <span class="project__year mono">2021</span>
-        <span class="project__arrow">↗</span>
       </a>
 
       <div class="project-visual" aria-hidden="true">
@@ -750,11 +742,13 @@
       });
       document.querySelectorAll(".hover-project").forEach(project => {
         project.addEventListener("mouseenter", () => {
+          cursor.classList.add("is-active");
           visualImage.src = project.dataset.image;
           visual.classList.add("visible");
           cursorLabel.classList.add("visible");
         });
         project.addEventListener("mouseleave", () => {
+          cursor.classList.remove("is-active");
           visual.classList.remove("visible");
           cursorLabel.classList.remove("visible");
         });
