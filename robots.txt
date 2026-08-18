@@ -1,0 +1,5 @@
+# robots.txt — rionaci.com
+User-agent: *
+Disallow:
+
+Sitemap: https://rionaci.com/sitemap.xml
