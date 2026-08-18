@@ -1,4 +1,3 @@
-# robots.txt — rionaci.com
 User-agent: *
 Disallow:
 
