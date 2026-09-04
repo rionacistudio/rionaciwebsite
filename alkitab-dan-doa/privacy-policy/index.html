@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="icon" type="image/png" href="../../favicon-rionaci.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e8e6df">
+  <meta name="description" content="Kebijakan Privasi aplikasi Alkitab & Doa oleh Rionaci Studio.">
+  <title>Kebijakan Privasi - Alkitab & Doa | Rionaci Studio</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+    :root {
+      --paper: #e8e6df;
+      --ink: #171714;
+      --muted: #77766f;
+      --line: rgba(23, 23, 20, .18);
+      --accent: #ed5c35;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: var(--paper); color: var(--ink); scroll-behavior: auto; }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--paper);
+      font-family: "DM Mono", monospace;
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+    }
+
+    ::selection { color: var(--paper); background: var(--ink); }
+
+    a, button { color: inherit; cursor: none; -webkit-tap-highlight-color: transparent; }
+    a { text-decoration: none; }
+    a:active, button:active, a:focus, button:focus { outline: none; }
+    button { border: 0; background: none; font: inherit; }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.45;
+      letter-spacing: -.02em;
+    }
+
+    .noise {
+      position: fixed; z-index: 9990; inset: 0;
+      opacity: .035; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .site-header {
+      position: sticky; top: 0;
+      z-index: 100; width: 100%;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; padding: 22px 28px;
+      mix-blend-mode: difference; color: white;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 8px;
+      justify-self: start; font-weight: 600; font-size: 15px; letter-spacing: -.035em;
+    }
+    .brand__mark {
+      display: grid; width: 28px; height: 28px; place-items: center;
+      border-radius: 50%; overflow: hidden;
+    }
+    .brand__mark img { width: 100%; height: 100%; object-fit: contain; }
+    .back-link { justify-self: end; color: inherit; }
+
+    .page {
+      padding: 70px 28px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 24% 1fr; gap: 40px;
+      padding-bottom: 70px; border-bottom: 1px solid var(--line);
+    }
+    .hero__rule { color: var(--muted); font-size: 12px; letter-spacing: .02em; }
+    .hero__title {
+      font-size: clamp(38px, 5.5vw, 84px); font-weight: 300;
+      line-height: .92; letter-spacing: -.06em;
+    }
+    .hero__title span { display: block; }
+    .hero__title span:nth-child(2) { color: var(--accent); }
+
+    .policy { display: grid; grid-template-columns: 24% 1fr; gap: 40px; }
+    .policy__meta {
+      position: sticky; top: 110px; align-self: start;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .policy__meta a {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding-bottom: 3px; border-bottom: 1px solid var(--ink);
+      font-size: 12px; width: fit-content;
+    }
+    .policy__meta a i { font-style: normal; transition: transform .35s var(--ease); }
+    .policy__meta a:hover i { transform: translate(4px, -4px); }
+
+    .policy__body { max-width: 760px; padding-bottom: 110px; }
+    .policy__body p { margin-bottom: 26px; font-size: 13px; line-height: 1.75; }
+    .policy__body strong { font-weight: 500; }
+    .policy__section { padding: 38px 0; border-top: 1px solid var(--line); }
+    .policy__section h2 {
+      margin-bottom: 22px; font-size: 15px; font-weight: 500; letter-spacing: -.02em;
+    }
+    .policy__section p:last-child { margin-bottom: 0; }
+    .policy__list { margin: 0 0 26px; padding-left: 0; list-style: none; }
+    .policy__list li {
+      position: relative; padding-left: 22px; margin-bottom: 12px;
+      font-size: 13px; line-height: 1.7;
+    }
+    .policy__list li::before {
+      position: absolute; left: 2px; top: .5em;
+      width: 6px; height: 1px; content: ""; background: var(--ink);
+    }
+    .policy__list li:last-child { margin-bottom: 0; }
+    .policy__list li strong { font-weight: 500; }
+    .policy__links a { border-bottom: 1px solid var(--line); transition: color .3s; }
+    .policy__links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .intro {
+      display: grid; grid-template-columns: 24% 1fr; gap: 40px;
+      padding: 70px 0; border-top: 1px solid var(--line);
+    }
+    .intro__body { max-width: 760px; }
+    .intro__body p { margin-bottom: 26px; font-size: 13px; line-height: 1.75; }
+    .intro__body p:last-child { margin-bottom: 0; }
+
+    .footer {
+      display: flex; justify-content: space-between; align-items: end;
+      padding: 25px 28px; color: var(--paper); background: var(--ink);
+    }
+    .footer a { border-bottom: 1px solid rgba(255,255,255,.3); transition: color .3s; }
+    .footer a:hover { color: var(--accent); }
+
+    @media (max-width: 1024px) {
+      body, a, button { cursor: auto; }
+      .mono { font-size: 12px; }
+      .site-header, .page, .footer { padding-right: 17px; padding-left: 17px; }
+      .site-header { padding-top: 17px; }
+      .hero, .policy, .intro { grid-template-columns: 1fr; gap: 25px; }
+      .hero { padding-bottom: 45px; }
+      .hero__title { font-size: clamp(42px, 13vw, 82px); }
+      .policy__meta { position: static; }
+      .policy__body { padding-bottom: 70px; }
+      .intro { padding: 50px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="brand" href="https://rionaci.com" aria-label="Rionaci Studio - Homepage">
+      <span class="brand__mark"><img src="../../rionaci-logo.svg" alt="Rionaci"></span>
+    </a>
+    <a class="back-link mono" href="https://rionaci.com">rionaci.com ↑</a>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <span class="hero__rule mono">Kebijakan Privasi</span>
+      <h1 class="hero__title">
+        <span>Alkitab &</span>
+        <span>Doa</span>
+      </h1>
+    </section>
+
+    <section class="prologue mono">
+      <p>Terakhir diperbarui: 3 Agustus 2026</p>
+    </section>
+
+    <section class="policy">
+      <aside class="policy__meta mono">
+        <span class="hero__rule">Daftar isi</span>
+        <a href="#" class="toTop">Kembali ke atas <i>↑</i></a>
+      </aside>
+      <div class="policy__body">
+        <section class="policy__section">
+          <h2>1. Tentang kebijakan ini</h2>
+          <p>Kebijakan Privasi ini menjelaskan cara Rionaci Studio ("kami") menangani informasi saat Anda menggunakan aplikasi Alkitab &amp; Doa ("Aplikasi"), dengan nama paket <strong>com.rionaci.alkitabdandoa</strong>. Alkitab &amp; Doa dirancang agar fungsi utama dapat digunakan secara offline. Data bacaan dan pengaturan pribadi disimpan secara lokal pada perangkat. Beberapa layanan Google dapat memproses data saat iklan ditampilkan atau ketika pengguna melakukan pembelian.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>2. Data yang disimpan secara lokal</h2>
+          <p>Aplikasi dapat menyimpan data berikut pada perangkat Anda:</p>
+          <ul class="policy__list">
+            <li>bookmark, favorit, sorotan, dan catatan ayat;</li>
+            <li>riwayat pencarian, riwayat membaca, dan progres membaca;</li>
+            <li>preferensi tampilan, tema, font, notifikasi, dan pengaturan Aplikasi;</li>
+            <li>status akses fitur PRO yang diperlukan untuk mengaktifkan fitur yang telah dibeli.</li>
+          </ul>
+          <p>Data tersebut digunakan untuk menyediakan fungsi Aplikasi dan pada umumnya tidak dikirim ke server milik Rionaci Studio. Karena pencadangan Android diaktifkan, sebagian data lokal dapat dicadangkan oleh Google sesuai pengaturan perangkat dan kebijakan akun Google Anda.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>3. Data yang dapat diproses oleh layanan pihak ketiga</h2>
+          <p>Aplikasi menggunakan layanan berikut:</p>
+          <ul class="policy__list">
+            <li><strong>Google AdMob</strong> untuk menampilkan iklan tertentu. Google dapat memproses pengenal perangkat atau iklan, alamat IP, informasi perangkat, perkiraan lokasi berdasarkan IP, interaksi iklan, dan data diagnostik untuk penayangan iklan, pencegahan penipuan, keamanan, pengukuran, dan analitik.</li>
+            <li><strong>Google Play Billing</strong> untuk langganan atau pembelian fitur PRO. Informasi transaksi dan pembayaran diproses oleh Google Play. Kami tidak menerima atau menyimpan nomor kartu pembayaran Anda. Aplikasi menerima informasi yang diperlukan untuk memverifikasi status pembelian dan memberikan akses PRO.</li>
+            <li><strong>Google Play Services</strong> untuk mendukung fungsi layanan Google yang digunakan Aplikasi. Layanan ini dapat memproses informasi teknis dan diagnostik sesuai kebijakan Google.</li>
+          </ul>
+          <p>Penanganan data oleh Google tunduk pada <a class="policy__links" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Google</a> dan <a class="policy__links" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">cara Google menggunakan informasi dari aplikasi mitra</a>.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>4. Izin perangkat</h2>
+          <p>Aplikasi dapat menggunakan izin berikut untuk menyediakan fiturnya:</p>
+          <ul class="policy__list">
+            <li><strong>Internet</strong>, untuk iklan, pembelian Google Play, dan membuka layanan eksternal;</li>
+            <li><strong>Notifikasi</strong>, untuk mengirim pengingat yang Anda aktifkan;</li>
+            <li><strong>Alarm dan mulai saat perangkat menyala</strong>, untuk menjadwalkan kembali pengingat setelah perangkat dinyalakan ulang;</li>
+            <li><strong>Penyimpanan pada Android versi lama</strong>, untuk membuat atau membagikan gambar/konten yang Anda pilih.</li>
+          </ul>
+          <p>Anda dapat mengelola izin melalui pengaturan Android. Menolak izin tertentu dapat membatasi fitur terkait.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>5. Tujuan penggunaan data</h2>
+          <p>Data digunakan untuk:</p>
+          <ul class="policy__list">
+            <li>menyediakan dan mempertahankan fungsi Aplikasi;</li>
+            <li>menyimpan preferensi serta aktivitas bacaan yang Anda pilih;</li>
+            <li>menampilkan dan mengukur iklan;</li>
+            <li>memproses, memverifikasi, dan memulihkan pembelian;</li>
+            <li>menjaga keamanan, mencegah penipuan, dan memperbaiki masalah teknis;</li>
+            <li>mematuhi kewajiban hukum yang berlaku.</li>
+          </ul>
+        </section>
+
+        <section class="policy__section">
+          <h2>6. Pembagian data</h2>
+          <p>Kami tidak menjual data pribadi Anda. Data dapat diproses atau dibagikan kepada penyedia layanan yang diperlukan untuk menjalankan Aplikasi, khususnya Google AdMob, Google Play Billing, dan Google Play Services, atau apabila diwajibkan oleh hukum.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>7. Retensi dan penghapusan data</h2>
+          <p>Data lokal tersimpan selama Aplikasi masih terpasang atau sampai Anda menghapusnya melalui fitur Aplikasi, menghapus data Aplikasi dari pengaturan Android, atau mencopot pemasangan Aplikasi. Data transaksi yang diproses oleh Google disimpan sesuai kebijakan dan kewajiban hukum Google.</p>
+          <p>Aplikasi tidak mewajibkan pembuatan akun Rionaci Studio. Karena itu, tidak ada akun pengguna pada server kami yang perlu dihapus. Untuk pertanyaan atau permintaan terkait privasi, hubungi kami melalui alamat email di bawah.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>8. Keamanan</h2>
+          <p>Kami menggunakan kemampuan keamanan platform Android dan membatasi penggunaan data sesuai kebutuhan fungsi Aplikasi. Namun, tidak ada metode penyimpanan atau transmisi elektronik yang dapat dijamin sepenuhnya aman.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>9. Privasi anak</h2>
+          <p>Aplikasi tidak dirancang secara khusus untuk anak di bawah 13 tahun dan kami tidak dengan sengaja meminta anak memberikan data pribadi kepada Rionaci Studio. Orang tua atau wali yang meyakini bahwa seorang anak telah memberikan data pribadi kepada kami dapat menghubungi kami untuk meminta penanganan yang sesuai.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>10. Tautan dan layanan eksternal</h2>
+          <p>Aplikasi dapat membuka aplikasi atau situs eksternal, misalnya email, WhatsApp, atau Google Play. Kami tidak mengendalikan praktik privasi layanan tersebut. Tinjau kebijakan privasi masing-masing layanan sebelum menggunakannya.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>11. Perubahan kebijakan</h2>
+          <p>Kebijakan ini dapat diperbarui apabila fitur, layanan pihak ketiga, atau ketentuan hukum berubah. Tanggal pembaruan terbaru akan ditampilkan di bagian atas halaman ini. Perubahan penting dapat diberitahukan melalui pembaruan Aplikasi atau halaman ini.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>12. Kontak</h2>
+          <p>Jika Anda memiliki pertanyaan tentang kebijakan ini, hubungi:</p>
+          <p>
+            <strong>Rionaci Studio</strong><br>
+            Email: <a class="policy__links" href="mailto:rionacistudio@gmail.com">rionacistudio@gmail.com</a><br>
+            Indonesia
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="mono">© 2026 Rionaci Studio.</span>
+    <span class="mono">Kebijakan ini berlaku untuk aplikasi Alkitab &amp; Doa.</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".toTop").forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+    document.querySelectorAll(".footer a").forEach(function(el) {
+      el.addEventListener("click", function(e) {
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
