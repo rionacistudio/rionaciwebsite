@@ -1,4 +1,7 @@
 User-agent: *
 Disallow:
 
+User-agent: Google-ads.txt
+Allow: /
+
 Sitemap: https://rionaci.com/sitemap.xml
