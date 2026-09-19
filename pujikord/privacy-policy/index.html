@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="icon" type="image/png" href="../../favicon-rionaci.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#e8e6df">
+  <meta name="description" content="Kebijakan Privasi aplikasi Pujikord: Kunci Gitar Rohani oleh Rionaci Studio.">
+  <title>Kebijakan Privasi - Pujikord | Rionaci Studio</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+    :root {
+      --paper: #e8e6df;
+      --ink: #171714;
+      --muted: #77766f;
+      --line: rgba(23, 23, 20, .18);
+      --accent: #ed5c35;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: var(--paper); color: var(--ink); scroll-behavior: auto; }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--paper);
+      font-family: "DM Mono", monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { color: var(--paper); background: var(--ink); }
+
+    a, button { color: inherit; -webkit-tap-highlight-color: transparent; }
+    a { text-decoration: none; }
+    a:active, button:active, a:focus, button:focus { outline: none; }
+    button { border: 0; background: none; font: inherit; }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.45;
+      letter-spacing: -.02em;
+    }
+
+    .noise {
+      position: fixed; z-index: 9990; inset: 0;
+      opacity: .035; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .site-header {
+      position: sticky; top: 0;
+      z-index: 100; width: 100%;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; padding: 22px 28px;
+      mix-blend-mode: difference; color: white;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 8px;
+      justify-self: start; font-weight: 600; font-size: 15px; letter-spacing: -.035em;
+    }
+    .brand__mark {
+      display: grid; width: 28px; height: 28px; place-items: center;
+      border-radius: 50%; overflow: hidden;
+    }
+    .brand__mark img { width: 100%; height: 100%; object-fit: contain; }
+    .back-link { justify-self: end; color: inherit; }
+
+    .page {
+      padding: 70px 28px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 24% 1fr; gap: 40px;
+      padding-bottom: 70px; border-bottom: 1px solid var(--line);
+    }
+    .hero__rule { color: var(--muted); font-size: 12px; letter-spacing: .02em; }
+    .hero__title {
+      font-size: clamp(38px, 5.5vw, 84px); font-weight: 300;
+      line-height: .92; letter-spacing: -.06em;
+    }
+    .hero__title span { display: block; }
+    .hero__title span:nth-child(2) { color: var(--accent); }
+
+    .prologue { padding: 30px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+    .policy { display: grid; grid-template-columns: 24% 1fr; gap: 40px; margin-top: 40px; }
+    .policy__meta {
+      position: sticky; top: 110px; align-self: start;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .policy__meta a {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding-bottom: 3px; border-bottom: 1px solid var(--ink);
+      font-size: 12px; width: fit-content;
+    }
+    .policy__meta a i { font-style: normal; transition: transform .35s var(--ease); }
+    .policy__meta a:hover i { transform: translate(4px, -4px); }
+
+    .policy__body { max-width: 760px; padding-bottom: 110px; }
+    .policy__body p { margin-bottom: 26px; font-size: 13px; line-height: 1.75; }
+    .policy__body strong { font-weight: 500; }
+    .policy__section { padding: 38px 0; border-top: 1px solid var(--line); }
+    .policy__section:first-child { border-top: none; padding-top: 0; }
+    .policy__section h2 {
+      margin-bottom: 22px; font-size: 15px; font-weight: 500; letter-spacing: -.02em;
+    }
+    .policy__section h3 {
+      margin: 20px 0 12px; font-size: 14px; font-weight: 500; letter-spacing: -.01em; color: var(--accent);
+    }
+    .policy__section p:last-child { margin-bottom: 0; }
+    .policy__list { margin: 0 0 26px; padding-left: 0; list-style: none; }
+    .policy__list li {
+      position: relative; padding-left: 22px; margin-bottom: 12px;
+      font-size: 13px; line-height: 1.7;
+    }
+    .policy__list li::before {
+      position: absolute; left: 2px; top: .5em;
+      width: 6px; height: 1px; content: ""; background: var(--ink);
+    }
+    .policy__list li:last-child { margin-bottom: 0; }
+    .policy__list li strong { font-weight: 500; }
+    .policy__links a, a.policy__links { border-bottom: 1px solid var(--line); transition: color .3s; }
+    .policy__links a:hover, a.policy__links:hover { color: var(--accent); border-color: var(--accent); }
+
+    .footer {
+      display: flex; justify-content: space-between; align-items: end;
+      padding: 25px 28px; color: var(--paper); background: var(--ink);
+    }
+    .footer a { border-bottom: 1px solid rgba(255,255,255,.3); transition: color .3s; }
+    .footer a:hover { color: var(--accent); }
+
+    @media (max-width: 1024px) {
+      body, a, button { cursor: auto; }
+      .mono { font-size: 12px; }
+      .site-header, .page, .footer { padding-right: 17px; padding-left: 17px; }
+      .site-header { padding-top: 17px; }
+      .hero, .policy { grid-template-columns: 1fr; gap: 25px; }
+      .hero { padding-bottom: 45px; }
+      .hero__title { font-size: clamp(42px, 13vw, 82px); }
+      .policy__meta { position: static; }
+      .policy__body { padding-bottom: 70px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="brand" href="https://rionaci.com" aria-label="Rionaci Studio - Homepage">
+      <span class="brand__mark"><img src="../../rionaci-logo.svg" alt="Rionaci"></span>
+    </a>
+    <a class="back-link mono" href="https://rionaci.com">rionaci.com ↑</a>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <span class="hero__rule mono">Kebijakan Privasi</span>
+      <h1 class="hero__title">
+        <span>Puji-</span>
+        <span>kord</span>
+      </h1>
+    </section>
+
+    <section class="prologue mono">
+      <p>Terakhir diperbarui: 19 September 2026</p>
+    </section>
+
+    <section class="policy">
+      <aside class="policy__meta mono">
+        <span class="hero__rule">Pujikord App</span>
+        <a href="#" class="toTop">Kembali ke atas <i>↑</i></a>
+      </aside>
+      <div class="policy__body">
+        <section class="policy__section">
+          <p><strong>Pujikord: Kunci Gitar Rohani</strong> (“Pujikord”, “kami”, atau “aplikasi”) menghargai privasi pengguna. Kebijakan Privasi ini menjelaskan jenis informasi yang dapat diproses ketika Anda menggunakan aplikasi Pujikord, bagaimana informasi tersebut digunakan, serta pilihan yang tersedia bagi pengguna.</p>
+          <p>Dengan menggunakan Pujikord, Anda menyetujui praktik yang dijelaskan dalam Kebijakan Privasi ini.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>1. Informasi yang Diproses</h2>
+          <p>Pujikord tidak mewajibkan pengguna membuat akun atau login. Kami tidak secara langsung meminta nama, alamat, nomor telepon, kata sandi, atau informasi identitas pribadi lainnya untuk menggunakan fitur utama aplikasi.</p>
+          <p>Namun, beberapa informasi dapat diproses secara otomatis oleh aplikasi atau layanan pihak ketiga.</p>
+          
+          <h3>A. Data yang Tersimpan di Perangkat</h3>
+          <p>Informasi berikut dapat disimpan secara lokal di perangkat pengguna:</p>
+          <ul class="policy__list">
+            <li>Lagu favorit</li>
+            <li>Set list pelayanan</li>
+            <li>Urutan lagu dalam set list</li>
+            <li>Pengaturan tema</li>
+            <li>Ukuran teks chord</li>
+            <li>Kecepatan autoscroll</li>
+            <li>Custom intro</li>
+            <li>Posisi scroll terakhir</li>
+            <li>Status atau preferensi aplikasi lainnya</li>
+          </ul>
+          <p>Data tersebut disimpan di perangkat menggunakan penyimpanan lokal Android, seperti Room Database dan DataStore.</p>
+          <p>Data lokal tidak dikirimkan kepada kami kecuali pengguna secara sengaja membagikannya menggunakan fitur berbagi yang tersedia pada perangkat.</p>
+
+          <h3>B. Data Penggunaan dan Perangkat</h3>
+          <p>Layanan pihak ketiga yang digunakan dalam aplikasi dapat mengumpulkan informasi tertentu secara otomatis, seperti:</p>
+          <ul class="policy__list">
+            <li>Alamat IP</li>
+            <li>Jenis dan model perangkat</li>
+            <li>Versi sistem operasi</li>
+            <li>Bahasa perangkat</li>
+            <li>Informasi aplikasi</li>
+            <li>Identifier perangkat atau identifier iklan</li>
+            <li>Interaksi dengan iklan</li>
+            <li>Informasi diagnostik</li>
+            <li>Data performa dan crash</li>
+            <li>Perkiraan lokasi berdasarkan alamat IP</li>
+            <li>Aktivitas penggunaan aplikasi</li>
+          </ul>
+          <p>Informasi ini digunakan sesuai kebijakan privasi masing-masing penyedia layanan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>2. Penggunaan Informasi</h2>
+          <p>Informasi yang diproses dapat digunakan untuk:</p>
+          <ul class="policy__list">
+            <li>Menyediakan dan menjalankan fitur aplikasi</li>
+            <li>Menampilkan serta menyinkronkan data chord</li>
+            <li>Menyimpan preferensi pengguna</li>
+            <li>Menampilkan iklan</li>
+            <li>Mengukur performa iklan</li>
+            <li>Mendeteksi penyalahgunaan atau aktivitas tidak sah</li>
+            <li>Memperbaiki error, crash, dan masalah teknis</li>
+            <li>Meningkatkan kualitas, keamanan, dan pengalaman pengguna</li>
+            <li>Memproses permintaan chord yang dikirim pengguna</li>
+          </ul>
+        </section>
+
+        <section class="policy__section">
+          <h2>3. Iklan</h2>
+          <p>Pujikord menggunakan Google AdMob untuk menampilkan iklan.</p>
+          <p>Google AdMob dapat memproses data seperti:</p>
+          <ul class="policy__list">
+            <li>Identifier iklan</li>
+            <li>Alamat IP</li>
+            <li>Informasi perangkat</li>
+            <li>Perkiraan lokasi</li>
+            <li>Interaksi dengan iklan</li>
+            <li>Informasi diagnostik dan performa</li>
+            <li>Aktivitas aplikasi tertentu</li>
+          </ul>
+          <p>Iklan dapat bersifat dipersonalisasi atau tidak dipersonalisasi, tergantung pada wilayah, pengaturan perangkat, persetujuan pengguna, dan kebijakan Google.</p>
+          <p>Pengguna dapat mengatur preferensi iklan melalui pengaturan akun Google atau pengaturan privasi pada perangkat Android.</p>
+          <p>Informasi lebih lanjut tersedia di:</p>
+          <ul class="policy__list">
+            <li>Google Privacy Policy: <a class="policy__links" href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+            <li>How Google uses information from apps: <a class="policy__links" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">https://policies.google.com/technologies/partner-sites</a></li>
+            <li>Google Ads settings: <a class="policy__links" href="https://adssettings.google.com/" target="_blank" rel="noopener">https://adssettings.google.com/</a></li>
+          </ul>
+        </section>
+
+        <section class="policy__section">
+          <h2>4. Data Chord dan Sinkronisasi</h2>
+          <p>Pujikord menggunakan layanan backend Supabase untuk menyediakan dan menyinkronkan data chord lagu.</p>
+          <p>Ketika aplikasi mengakses server, informasi teknis seperti alamat IP, waktu permintaan, dan informasi koneksi dapat diproses oleh penyedia infrastruktur. Pujikord tidak menggunakan layanan ini untuk membuat profil identitas pengguna.</p>
+          <p>Informasi mengenai privasi Supabase tersedia di: <a class="policy__links" href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a></p>
+        </section>
+
+        <section class="policy__section">
+          <h2>5. Konten dan Pemutar YouTube</h2>
+          <p>Beberapa lagu dapat menyediakan tautan atau pemutar video YouTube. Ketika pengguna membuka atau memutar video, YouTube atau Google dapat memproses informasi sesuai dengan kebijakan privasinya.</p>
+          <p>Penggunaan pemutar YouTube tunduk pada:</p>
+          <ul class="policy__list">
+            <li>YouTube Terms of Service: <a class="policy__links" href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">https://www.youtube.com/t/terms</a></li>
+            <li>Google Privacy Policy: <a class="policy__links" href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+          </ul>
+          <p>Kami tidak mengendalikan proses pengumpulan data yang dilakukan oleh YouTube atau Google.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>6. Permintaan Chord melalui Email</h2>
+          <p>Fitur Request Chord memungkinkan pengguna membuka aplikasi email untuk mengirimkan:</p>
+          <ul class="policy__list">
+            <li>Nama lagu</li>
+            <li>Tautan video atau musik</li>
+            <li>Informasi lain yang ditambahkan sendiri oleh pengguna</li>
+          </ul>
+          <p>Email hanya dikirim setelah pengguna meninjau dan menekan tombol kirim pada aplikasi email yang dipilih. Informasi yang dikirim melalui email digunakan untuk meninjau permintaan chord dan berkomunikasi jika diperlukan.</p>
+          <p>Alamat tujuan permintaan chord: <strong>rionacistudio@gmail.com</strong></p>
+          <p>Jangan mengirimkan informasi pribadi atau sensitif melalui fitur ini.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>7. Fitur Berbagi dan Ekspor PDF</h2>
+          <p>Pujikord menyediakan fitur untuk:</p>
+          <ul class="policy__list">
+            <li>Membagikan chord sebagai teks</li>
+            <li>Membagikan set list</li>
+            <li>Mengekspor chord menjadi PDF</li>
+            <li>Membagikan file melalui aplikasi lain</li>
+          </ul>
+          <p>Proses berbagi dilakukan melalui menu berbagi Android dan aplikasi yang dipilih pengguna. Setelah konten dibagikan, pemrosesannya tunduk pada kebijakan privasi aplikasi penerima.</p>
+          <p>File PDF sementara dapat dibuat di penyimpanan cache aplikasi. File cache dapat dihapus secara otomatis oleh sistem atau ketika data aplikasi dibersihkan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>8. Langganan Pujikord PRO</h2>
+          <p>Pujikord dapat menawarkan fitur berbayar atau langganan PRO melalui Google Play.</p>
+          <p>Jika sistem pembayaran telah diaktifkan, transaksi akan diproses oleh Google Play. Kami tidak menerima atau menyimpan nomor kartu, rekening bank, atau detail metode pembayaran pengguna.</p>
+          <p>Google dapat memproses data transaksi sesuai Kebijakan Privasi Google: <a class="policy__links" href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+          <p>Riwayat pembelian dan status langganan dapat diproses untuk menentukan akses ke fitur PRO, seperti:</p>
+          <ul class="policy__list">
+            <li>Menghilangkan iklan</li>
+            <li>Ekspor chord ke PDF</li>
+            <li>Membuat dan membagikan set list</li>
+            <li>Menyimpan set list tanpa batas</li>
+          </ul>
+        </section>
+
+        <section class="policy__section">
+          <h2>9. Penyimpanan dan Penghapusan Data</h2>
+          <p>Data favorit, set list, custom intro, posisi scroll, dan pengaturan disimpan secara lokal selama aplikasi masih terpasang atau hingga data tersebut dihapus.</p>
+          <p>Pengguna dapat menghapus data lokal dengan:</p>
+          <ul class="policy__list">
+            <li>Menghapus item secara langsung di aplikasi</li>
+            <li>Menghapus data aplikasi melalui pengaturan Android</li>
+            <li>Menghapus instalasi aplikasi</li>
+          </ul>
+          <p>Log crash lokal, jika dibuat, disimpan pada penyimpanan internal aplikasi dan tidak otomatis dikirim kepada kami.</p>
+          <p>Data yang diproses oleh pihak ketiga disimpan sesuai kebijakan retensi masing-masing penyedia layanan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>10. Keamanan</h2>
+          <p>Kami mengambil langkah yang wajar untuk melindungi informasi yang diproses aplikasi, termasuk menggunakan koneksi HTTPS untuk komunikasi dengan layanan backend.</p>
+          <p>Namun, tidak ada metode transmisi atau penyimpanan elektronik yang dapat dijamin sepenuhnya aman. Pengguna bertanggung jawab menjaga keamanan perangkat dan akun pihak ketiga yang digunakan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>11. Privasi Anak</h2>
+          <p>Pujikord tidak dirancang secara khusus untuk anak-anak di bawah usia 13 tahun dan tidak secara sengaja meminta informasi pribadi dari anak-anak.</p>
+          <p>Jika orang tua atau wali mengetahui bahwa seorang anak telah memberikan informasi pribadi kepada kami, silakan hubungi kami agar informasi tersebut dapat ditinjau dan dihapus jika diperlukan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>12. Tautan dan Layanan Pihak Ketiga</h2>
+          <p>Aplikasi dapat menyediakan tautan ke layanan pihak ketiga, termasuk:</p>
+          <ul class="policy__list">
+            <li>YouTube</li>
+            <li>Google</li>
+            <li>TikTok</li>
+            <li>WhatsApp</li>
+            <li>Aplikasi email</li>
+            <li>Aplikasi berbagi lainnya</li>
+          </ul>
+          <p>Kami tidak bertanggung jawab atas konten, keamanan, atau praktik privasi layanan pihak ketiga tersebut. Pengguna disarankan membaca kebijakan privasi setiap layanan yang digunakan.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>13. Perubahan Kebijakan Privasi</h2>
+          <p>Kebijakan Privasi ini dapat diperbarui dari waktu ke waktu untuk menyesuaikan perubahan fitur, layanan, peraturan, atau kebijakan Google Play.</p>
+          <p>Perubahan akan ditampilkan pada halaman ini dengan memperbarui tanggal “Terakhir diperbarui”. Pengguna disarankan memeriksa halaman ini secara berkala.</p>
+        </section>
+
+        <section class="policy__section">
+          <h2>14. Kontak</h2>
+          <p>Jika Anda memiliki pertanyaan, permintaan, atau keluhan mengenai Kebijakan Privasi Pujikord, silakan hubungi:</p>
+          <p>
+            <strong>Rionaci Studio</strong><br>
+            Email: <a class="policy__links" href="mailto:rionacistudio@gmail.com">rionacistudio@gmail.com</a>
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="mono">© 2026 Rionaci Studio.</span>
+    <span class="mono">Kebijakan ini berlaku untuk aplikasi Pujikord: Kunci Gitar Rohani.</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".toTop").forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+    document.querySelectorAll(".footer a").forEach(function(el) {
+      el.addEventListener("click", function(e) {
+        e.preventDefault();
+      });
+    });
+  </script>
+</body>
+</html>
